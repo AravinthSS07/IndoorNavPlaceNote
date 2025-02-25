@@ -14,4 +14,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ReadMap.unity
     guid: 7ff821bf32bc1492992d7836af8c28f1
-  m_configObjects: {}
+  m_configObjects:
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 024bf1aff296e33428ac0058f36217f7,
+      type: 2}
+    UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: efe2000e0565e044381b71725a759cda,
+      type: 2}
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: f9ecba91da137ea409fc0c16250b866c,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 3bfe5cbc43ab11249b0589144650ded1,
+      type: 2}

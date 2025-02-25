@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
-public class Node : MonoBehaviour {
-
+public class Node : MonoBehaviour
+{
     public Vector3 pos;
 
     [Header("A*")]
@@ -14,40 +12,43 @@ public class Node : MonoBehaviour {
     public float GCost { get; set; }
     public float Cost { get; set; }
     public Node Parent { get; set; }
-
-    //next node in navigation list
     public Node NextInList { get; set; }
 
     private Vector3 scale;
     private bool isDestination = false;
 
-    private void Awake() {
+    private void Awake()
+    {
         transform.GetChild(0).gameObject.SetActive(false);
-        //save scale
         scale = transform.localScale;
-        //check if destination
-        if (GetComponent<DiamondBehavior>() != null) isDestination = true;
 #if UNITY_EDITOR
         pos = transform.position;
 #endif
+        if (GetComponent<DiamondBehavior>() != null)
+            isDestination = true;
     }
 
-    public void Activate(bool active) {
+    public void Activate(bool active)
+    {
         transform.GetChild(0).gameObject.SetActive(active);
-        if (NextInList != null) {
+        if (NextInList != null)
+        {
             transform.LookAt(NextInList.transform);
         }
     }
 
-    void Update() {
-        //make pulsate
+    void Update()
+    {
         if (!isDestination)
-            transform.localScale = scale * (1 + Mathf.Sin(Mathf.PI * Time.time) * .2f); 
+            transform.localScale = scale * (1 + Mathf.Sin(Mathf.PI * Time.time) * 0.2f);
     }
 
-    public void FindNeighbors(float maxDistance) {
-        foreach (Node node in FindObjectsOfType<Node>()) {
-            if (Vector3.Distance(node.pos, this.pos) < maxDistance) {
+    public void FindNeighbors(float maxDistance)
+    {
+        foreach (Node node in FindObjectsOfType<Node>())
+        {
+            if (Vector3.Distance(node.pos, this.pos) < maxDistance)
+            {
                 neighbors.Add(node);
             }
         }
